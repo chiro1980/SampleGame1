@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,10 @@ public class CoinSpawner : MonoBehaviour
 
     [SerializeField]
     GameObject spawnPoint;
+
+    [SerializeField]
+    List<GameObject> spawnPoints;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,4 +30,10 @@ public class CoinSpawner : MonoBehaviour
     {
         Instantiate(coinPrefab, spawnPoint.transform.position, Quaternion.identity);
     }
+
+    public void SpawnCoin(int index)
+    {
+        Instantiate(coinPrefab, spawnPoints[index].transform.position, Quaternion.identity);
+    }
+
 }

@@ -49,9 +49,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        //if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        //{
+        //    SpawnCoin(1);
+        //}
+
+        if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            SpawnCoin(1);
+            SpawnCoin(0, 1);
+        }
+        if (Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            SpawnCoin(1, 1);
+        }
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            SpawnCoin(2, 1);
         }
     }
 
@@ -60,11 +73,28 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnCoinCoroutine(count));
     }
 
+    void SpawnCoin(int index, int count)
+    {
+        StartCoroutine(SpawnCoinCoroutine(index, count));
+    }
+
+
+
     IEnumerator SpawnCoinCoroutine(int count)
     {
         for (int i = 0; i < count; i++)
         {
             coinSpawner.SpawnCoin();
+            if (coinCount > 0) coinCount--;
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator SpawnCoinCoroutine(int index, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            coinSpawner.SpawnCoin(index);
             if (coinCount > 0) coinCount--;
             yield return new WaitForSeconds(0.2f);
         }
