@@ -18,6 +18,7 @@ public class CoinController : MonoBehaviour
     {
         if (other.CompareTag("GetArea"))
         {
+            GameManager.Instance.coinCount++;
             Destroy(gameObject);
         }
         else if (other.CompareTag("FailArea"))
