@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     CoinSpawner coinSpawner;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    IEnumerator Start()
     {
         coinSpawner = FindAnyObjectByType<CoinSpawner>();
-        SpawnCoin(200);
+        Time.timeScale = 10.0f;
+        yield return StartCoroutine(SpawnCoinCoroutine(200));
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
