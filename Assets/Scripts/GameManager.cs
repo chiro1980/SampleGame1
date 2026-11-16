@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         coinCount = 300;
         coinSpawner = FindAnyObjectByType<CoinSpawner>();
-        Time.timeScale = 20.0f;
+        Time.timeScale = 10.0f;
         yield return StartCoroutine(SpawnCoinCoroutine(200));
         Time.timeScale = 1.0f;
     }
