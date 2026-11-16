@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CoinSpawner : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class CoinSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SpawnCoin()

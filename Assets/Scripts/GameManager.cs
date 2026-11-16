@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,18 +10,26 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinSpawner = FindAnyObjectByType<CoinSpawner>();
-        StartCoroutine(InitialSpawnCoin());
+        SpawnCoin(200);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            SpawnCoin(1);
+        }
     }
 
-    IEnumerator InitialSpawnCoin()
+    void SpawnCoin(int count)
     {
-        for(int i = 0; i < 200; i++)
+        StartCoroutine(SpawnCoinCoroutine(count));
+    }
+
+    IEnumerator SpawnCoinCoroutine(int count)
+    {
+        for (int i = 0; i < count; i++)
         {
             coinSpawner.SpawnCoin();
             yield return new WaitForSeconds(0.2f);
