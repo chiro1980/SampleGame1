@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GetArea
   - FailArea
+  - Switch
   layers:
   - Default
   - TransparentFX
