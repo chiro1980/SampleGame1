@@ -26,9 +26,10 @@ public class CoinSpawner : MonoBehaviour
 
     }
 
-    public void SpawnCoin()
+    public void SpawnCoinInit()
     {
-        Instantiate(coinPrefab, spawnPoint.transform.position, Quaternion.identity);
+        Vector3 offset = new Vector3(Random.Range(-0.2f, 0.2f), 0, 0);
+        Instantiate(coinPrefab, spawnPoint.transform.position + offset, Quaternion.identity);
     }
 
     public void SpawnCoin(int index)

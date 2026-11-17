@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         coinCount = 300;
         coinSpawner = FindAnyObjectByType<CoinSpawner>();
         Time.timeScale = 10.0f;
-        yield return StartCoroutine(SpawnCoinCoroutine(200));
+        yield return StartCoroutine(SpawnCoinCoroutine(150));
         Time.timeScale = 1.0f;
     }
 
@@ -68,10 +68,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnCoin(int count)
-    {
-        StartCoroutine(SpawnCoinCoroutine(count));
-    }
+
 
     void SpawnCoin(int index, int count)
     {
@@ -84,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            coinSpawner.SpawnCoin();
+            coinSpawner.SpawnCoinInit();
             if (coinCount > 0) coinCount--;
             yield return new WaitForSeconds(0.2f);
         }
