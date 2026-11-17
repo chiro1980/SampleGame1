@@ -25,5 +25,15 @@ public class CoinController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Switch"))
+        {
+            bool lightOn = other.GetComponent<SwitchController>().lightOn;
+            if (lightOn)
+            {
+                other.GetComponent<SwitchController>().LightOff();
+                GameManager.Instance.SetNewSwitch();
+                GameManager.Instance.SpawnCoin(5);
+            }
+        }
     }
 }
